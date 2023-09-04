@@ -3,8 +3,10 @@ import { getRekamMedisAllConfirm } from "../services/rekamMedis";
 import moment from "moment/moment";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import LoginHook from "../hooks/LoginHook";
 
 export default function SubRekamMedisAdmin() {
+  LoginHook();
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
