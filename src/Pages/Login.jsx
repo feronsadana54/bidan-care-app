@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import FormLogin from "../components/Fragments/FormLogin";
-import AuthLayout from "../components/Layouts/authLayout";
+import AuthLayout from "../components/Layouts/AuthLayout";
 import { Helmet } from "react-helmet-async";
 
 export default function LoginPage() {
