@@ -4,7 +4,7 @@ import {
   getAllUserAdmin,
   getAllUserNotAdmin,
 } from "../services/userAPI";
-import LoginHook from "../hooks/loginHook";
+import LoginHook from "../hooks/LoginHook";
 import { Helmet } from "react-helmet-async";
 
 export default function UserList() {
