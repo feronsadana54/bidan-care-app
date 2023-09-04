@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import FormUser from "../components/Fragments/FormUser";
-import AuthLayout from "../components/Layouts/authLayout";
+import AuthLayout from "../components/Layouts/AuthLayout";
 import { Helmet } from "react-helmet-async";
 
 export default function DaftarUser() {

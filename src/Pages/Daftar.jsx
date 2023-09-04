@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import DaftarChoose from "../components/Fragments/DaftarChoose";
-import AuthLayout from "../components/Layouts/authLayout";
+import AuthLayout from "../components/Layouts/AuthLayout";
 
 export default function Daftar() {
   return (
