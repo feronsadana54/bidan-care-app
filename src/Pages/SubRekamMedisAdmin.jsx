@@ -41,6 +41,7 @@ export default function SubRekamMedisAdmin() {
                   </th>
                 </tr>
               ) : (
+                data &&
                 data.map((item, index) => {
                   index++;
                   let date = new Date(item.tanggal);

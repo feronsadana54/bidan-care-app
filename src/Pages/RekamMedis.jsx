@@ -7,8 +7,8 @@ import {
 import RekamMedisIsConfirm from "../components/Layouts/RekamMedisIsConfirm";
 import SubRekamMedisUser from "./SubRekamMedisUser";
 import SubRekamMedisAdmin from "./SubRekamMedisAdmin";
-import LoginHook from "../hooks/LoginHook";
 import { Helmet } from "react-helmet-async";
+import LoginHook from "../hooks/loginHook";
 
 export default function RekamMedis() {
   const user = LoginHook();

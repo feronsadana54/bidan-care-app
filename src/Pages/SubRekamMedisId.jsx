@@ -31,9 +31,11 @@ export default function SubRekamMedisId() {
 
   useEffect(() => {
     getSubRekamMedisById(id, (response) => {
-      setStatus(response.message);
-      setData(response.data);
-      setLoading(false);
+      if (Array.isArray(response.data)) {
+        setStatus(response.message);
+        setData(response.data);
+        setLoading(false);
+      }
     });
   }, [data, id, status]);
 

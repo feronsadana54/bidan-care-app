@@ -58,6 +58,7 @@ export default function BlogList() {
                   </td>
                 </tr>
               ) : (
+                blog &&
                 blog.map((item, i) => {
                   return (
                     <tr key={i}>
