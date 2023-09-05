@@ -9,6 +9,7 @@ import {
 import { createHashHistory } from "history";
 import LoginHook from "../../hooks/LoginHook";
 import { getDataById } from "../../services/userAPI";
+import LogoImage from "../../assets/img/BidanCareLogo.png";
 
 export default function Navbar() {
   const history = createHashHistory();
@@ -57,11 +58,7 @@ export default function Navbar() {
         </div>
         <div className="navbar-center">
           <a className="btn btn-ghost" href="/dashboard">
-            <img
-              src="/src/assets/img/BidanCarelogo.png"
-              alt="logo"
-              className="h-12 w-48"
-            />
+            <img src={LogoImage} alt="logo" className="h-12 w-48" />
           </a>
         </div>
         <div className="navbar-end">

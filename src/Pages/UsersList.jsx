@@ -27,17 +27,21 @@ export default function UserList() {
   }, [user, admin]);
 
   useEffect(() => {
-    admin.map((item) => {
-      if (item.isAdmin == true) {
-        isAdmin.current.checked = true;
-      }
-    });
+    if (admin) {
+      admin.map((item) => {
+        if (item.isAdmin == true) {
+          isAdmin.current.checked = true;
+        }
+      });
+    }
 
-    user.map((item) => {
-      if (item.isAdmin == false) {
-        isAdmin.current.checked = false;
-      }
-    });
+    if (user) {
+      user.map((item) => {
+        if (item.isAdmin == false) {
+          isAdmin.current.checked = false;
+        }
+      });
+    }
   }, [admin, user]);
 
   let handlerIsAdmin = (id) => {

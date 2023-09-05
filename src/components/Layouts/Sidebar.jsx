@@ -2,6 +2,7 @@
 import { FaListUl, FaBookMedical, FaBlogger } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { MdSupervisedUserCircle } from "react-icons/md";
+import Logo from "../../assets/img/BidanCareLogo.png";
 
 export default function Sidebar(props) {
   const { username } = props;
@@ -23,7 +24,7 @@ export default function Sidebar(props) {
           <ul className="menu md:w-80 p-4 w-30 h-full bg-base-200 text-base-content ">
             <div className="w-full flex justify-center">
               <img
-                src="/src/assets/img/BidanCareLogo.png"
+                src={Logo}
                 alt="logo bidan"
                 className="object-cover w-40 md:w-56"
               />
