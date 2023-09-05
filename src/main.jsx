@@ -25,7 +25,7 @@ const user = token ? jwtDecode(token) : [];
 
 const router = createBrowserRouter([
   {
-    path: "",
+    path: "/",
     element: <LoginPage />,
     errorElement: <h1>Halaman tidak ditemukan!</h1>,
   },
