@@ -27,24 +27,27 @@ export default function UserList() {
   }, [user, admin]);
 
   useEffect(() => {
-    admin.map((item) => {
-      if (item.isAdmin == true) {
-        isAdmin.current.checked = true;
-      }
-    });
+    if (admin.length > 0) {
+      admin.map((item) => {
+        if (item.isAdmin == true) {
+          isAdmin.current.checked = true;
+        }
+      });
+    }
 
-    user.map((item) => {
-      if (item.isAdmin == false) {
-        isAdmin.current.checked = false;
-      }
-    });
+    if (user.length > 0) {
+      user.map((item) => {
+        if (item.isAdmin == false) {
+          isAdmin.current.checked = false;
+        }
+      });
+    }
   }, [admin, user]);
 
   let handlerIsAdmin = (id) => {
     setLoading(true);
     changeUserAdmin(id);
   };
-  console.log(admin, user);
 
   return (
     <>
@@ -70,8 +73,7 @@ export default function UserList() {
                 <tr className="text-center">
                   <th>Loading...</th>
                 </tr>
-              ) : (
-                admin &&
+              ) : admin && admin.length > 0 ? (
                 admin.map((item, index) => {
                   if (userData.userId != item._id) {
                     return (
@@ -95,6 +97,10 @@ export default function UserList() {
                     );
                   }
                 })
+              ) : (
+                <tr>
+                  <th colSpan="6">Data Admin kosong.</th>
+                </tr>
               )}
             </tbody>
           </table>
@@ -121,8 +127,7 @@ export default function UserList() {
                 <tr className="text-center">
                   <th>Loading...</th>
                 </tr>
-              ) : (
-                user &&
+              ) : user && user.length > 0 ? (
                 user.map((item, index) => {
                   index++;
                   return (
@@ -147,6 +152,10 @@ export default function UserList() {
                     </tr>
                   );
                 })
+              ) : (
+                <tr>
+                  <th colSpan="8">Data User kosong.</th>
+                </tr>
               )}
             </tbody>
           </table>
