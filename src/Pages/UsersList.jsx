@@ -27,27 +27,24 @@ export default function UserList() {
   }, [user, admin]);
 
   useEffect(() => {
-    if (admin) {
-      admin.map((item) => {
-        if (item.isAdmin == true) {
-          isAdmin.current.checked = true;
-        }
-      });
-    }
+    admin.map((item) => {
+      if (item.isAdmin == true) {
+        isAdmin.current.checked = true;
+      }
+    });
 
-    if (user) {
-      user.map((item) => {
-        if (item.isAdmin == false) {
-          isAdmin.current.checked = false;
-        }
-      });
-    }
+    user.map((item) => {
+      if (item.isAdmin == false) {
+        isAdmin.current.checked = false;
+      }
+    });
   }, [admin, user]);
 
   let handlerIsAdmin = (id) => {
     setLoading(true);
     changeUserAdmin(id);
   };
+  console.log(admin, user);
 
   return (
     <>
