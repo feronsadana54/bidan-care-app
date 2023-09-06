@@ -18,7 +18,7 @@ export const loginAPI = (data, callback) => {
       window.location.href = "/dashboard";
     })
     .catch(function (error) {
-      callback(error.response.data.message);
+      callback(error.response);
     });
 };
 
