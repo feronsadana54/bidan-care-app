@@ -18,6 +18,7 @@ export default function FormLogin() {
     };
 
     loginAPI(value, (response) => {
+      console.log(response);
       if (response.status !== 200) {
         setAlertVisible(true);
         setMessageTitle("Failed");
