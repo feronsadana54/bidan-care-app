@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const getDataById = async (id, callback) => {
   try {
-    const url = `/api/users/${id}`;
+    const url = `https://bidan-care-app.cyclic.app/api/users/${id}`;
     const response = await axios.get(url, {
       headers: {
         Authorization: localStorage.getItem("token"),
@@ -17,7 +17,7 @@ export const getDataById = async (id, callback) => {
 
 export async function getAllUserAdmin(callback) {
   try {
-    const url = "/api/users/get-user-admin";
+    const url = "https://bidan-care-app.cyclic.app/api/users/get-user-admin";
     const response = await axios.get(url, {
       headers: {
         Authorization: localStorage.getItem("token"),
@@ -31,7 +31,8 @@ export async function getAllUserAdmin(callback) {
 
 export async function getAllUserNotAdmin(callback) {
   try {
-    const url = "/api/users/get-user-not-admin";
+    const url =
+      "https://bidan-care-app.cyclic.app/api/users/get-user-not-admin";
     const response = await axios.get(url, {
       headers: {
         Authorization: localStorage.getItem("token"),
@@ -45,7 +46,7 @@ export async function getAllUserNotAdmin(callback) {
 
 export async function changeUserAdmin(id, callback) {
   try {
-    const url = `/api/users/change-admin/${id}`;
+    const url = `https://bidan-care-app.cyclic.app/api/users/change-admin/${id}`;
     const response = await axios.put(url, null, {
       headers: {
         Authorization: localStorage.getItem("token"),
@@ -59,7 +60,7 @@ export async function changeUserAdmin(id, callback) {
 
 export async function editUser(id, data, callback) {
   try {
-    const url = `/api/users/editUser/${id}`;
+    const url = `https://bidan-care-app.cyclic.app/api/users/editUser/${id}`;
     const response = await axios.put(url, data, {
       headers: {
         Authorization: localStorage.getItem("token"),

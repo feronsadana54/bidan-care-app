@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export function requestRekamMedis(callback) {
-  const url = `/api/rekam-medis/addRekamMedis`;
+  const url = `https://bidan-care-app.cyclic.app/api/rekam-medis/addRekamMedis`;
   axios
     .post(url, null, {
       headers: {
@@ -18,7 +18,7 @@ export function requestRekamMedis(callback) {
 
 export async function getAllDataNotConfim(callback) {
   try {
-    const url = `/api/rekam-medis/daftar-rm-dikonfirmasi`;
+    const url = `https://bidan-care-app.cyclic.app/api/rekam-medis/daftar-rm-dikonfirmasi`;
     const response = await axios.get(url, {
       headers: {
         Authorization: localStorage.getItem("token"),
@@ -31,7 +31,7 @@ export async function getAllDataNotConfim(callback) {
 }
 
 export function confirmRekamMedis(id, callback) {
-  const url = `/api/rekam-medis/konfirmasi-rekam-medis/${id}`;
+  const url = `https://bidan-care-app.cyclic.app/api/rekam-medis/konfirmasi-rekam-medis/${id}`;
   axios
     .put(url, null, {
       headers: {
@@ -48,7 +48,7 @@ export function confirmRekamMedis(id, callback) {
 
 export async function getDataRekamMedisById(id, callback) {
   try {
-    const url = `/api/rekam-medis/get-rekam-medis/${id}`;
+    const url = `https://bidan-care-app.cyclic.app/api/rekam-medis/get-rekam-medis/${id}`;
     const response = await axios.get(url, {
       headers: {
         Authorization: localStorage.getItem("token"),
@@ -61,7 +61,7 @@ export async function getDataRekamMedisById(id, callback) {
 }
 
 export function getSubRekamMedisById(id, callback) {
-  const url = `/api/sub-rekam-medis/${id}`;
+  const url = `https://bidan-care-app.cyclic.app/api/sub-rekam-medis/${id}`;
   axios
     .get(url, { headers: { Authorization: localStorage.getItem("token") } })
     .then(function (response) {
@@ -74,7 +74,7 @@ export function getSubRekamMedisById(id, callback) {
 }
 
 export function getRekamMedisAllConfirm(callback) {
-  const url = `/api/rekam-medis/rekamMedisConfirm`;
+  const url = `https://bidan-care-app.cyclic.app/api/rekam-medis/rekamMedisConfirm`;
   axios
     .get(url, {
       headers: {
@@ -90,7 +90,7 @@ export function getRekamMedisAllConfirm(callback) {
 }
 
 export function postSubRekamMedis(id, data, callback) {
-  const url = `/api/sub-rekam-medis/${id}/add-sub-rekam-medis`;
+  const url = `https://bidan-care-app.cyclic.app/api/sub-rekam-medis/${id}/add-sub-rekam-medis`;
 
   axios
     .post(url, data, {
@@ -105,7 +105,7 @@ export function postSubRekamMedis(id, data, callback) {
 }
 
 export function getSubRekamMedisId(id, callback) {
-  const url = `/api/sub-rekam-medis/sub-rm/${id}`;
+  const url = `https://bidan-care-app.cyclic.app/api/sub-rekam-medis/sub-rm/${id}`;
   axios
     .get(url, { headers: { Authorization: localStorage.getItem("token") } })
     .then(function (response) {
@@ -118,7 +118,7 @@ export function getSubRekamMedisId(id, callback) {
 
 export function updateSubRekamMedis(id, data, callback) {
   const idRM = localStorage.getItem("idRM");
-  const url = `/api/sub-rekam-medis/${idRM}/edit-sub-rekam-medis/${id}`;
+  const url = `https://bidan-care-app.cyclic.app/api/sub-rekam-medis/${idRM}/edit-sub-rekam-medis/${id}`;
   axios
     .put(url, data, {
       headers: {
@@ -136,7 +136,7 @@ export function updateSubRekamMedis(id, data, callback) {
 }
 
 export function deleteSubRekamMedis(id, callback) {
-  const url = `/api/sub-rekam-medis/hapus/${id}`;
+  const url = `https://bidan-care-app.cyclic.app/api/sub-rekam-medis/hapus/${id}`;
   axios
     .delete(url, {
       headers: {

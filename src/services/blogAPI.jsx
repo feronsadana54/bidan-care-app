@@ -2,7 +2,7 @@
 import axios from "axios";
 
 export const postBlog = (data, callback) => {
-  const url = `/api/blog/`;
+  const url = `https://bidan-care-app.cyclic.app/api/blog/`;
   axios
     .post(url, data, {
       headers: {
@@ -18,7 +18,7 @@ export const postBlog = (data, callback) => {
 };
 
 export const getBlogId = (id, callback) => {
-  const url = `/api/blog/${id}`;
+  const url = `https://bidan-care-app.cyclic.app/api/blog/${id}`;
   axios
     .get(url, {
       headers: {
@@ -35,7 +35,7 @@ export const getBlogId = (id, callback) => {
 
 export const getBlog = async (callback) => {
   try {
-    const url = `/api/blog/`;
+    const url = `https://bidan-care-app.cyclic.app/api/blog/`;
     const response = await axios.get(url, {
       headers: {
         Authorization: localStorage.getItem("token"),
@@ -49,7 +49,7 @@ export const getBlog = async (callback) => {
 };
 
 export const deleteBlog = (id) => {
-  const url = `/api/blog/${id}`;
+  const url = `https://bidan-care-app.cyclic.app/api/blog/${id}`;
   axios
     .delete(url, {
       headers: {
@@ -65,7 +65,7 @@ export const deleteBlog = (id) => {
 };
 
 export const updateBlog = (id, data, callback) => {
-  const url = `/api/blog/${id}`;
+  const url = `https://bidan-care-app.cyclic.app/api/blog/${id}`;
   axios
     .put(url, data, {
       headers: {
@@ -82,7 +82,7 @@ export const updateBlog = (id, data, callback) => {
 
 export const getTopBlogs = async (callback) => {
   try {
-    const url = `/api/blog/topBlogs`;
+    const url = `https://bidan-care-app.cyclic.app/api/blog/topBlogs`;
     const response = await axios.get(url, {
       headers: {
         Authorization: localStorage.getItem("token"),
@@ -95,7 +95,7 @@ export const getTopBlogs = async (callback) => {
 };
 
 export const addComment = (id, value, callback) => {
-  const url = `/api/blog/${id}/comment`;
+  const url = `https://bidan-care-app.cyclic.app/api/blog/${id}/comment`;
   axios
     .post(url, value, {
       headers: { Authorization: localStorage.getItem("token") },
@@ -109,7 +109,7 @@ export const addComment = (id, value, callback) => {
 };
 
 export const deleteComment = (idBlog, idComment, callback) => {
-  const url = `/api/blog/${idBlog}/comment/${idComment}`;
+  const url = `https://bidan-care-app.cyclic.app/api/blog/${idBlog}/comment/${idComment}`;
   axios
     .delete(url, {
       headers: {
@@ -125,7 +125,7 @@ export const deleteComment = (idBlog, idComment, callback) => {
 };
 
 export const addLike = (id, data, callback) => {
-  const url = `/api/blog/${id}/like`;
+  const url = `https://bidan-care-app.cyclic.app/api/blog/${id}/like`;
   axios
     .post(url, data, {
       headers: {
