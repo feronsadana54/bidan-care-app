@@ -3,7 +3,7 @@ import axios from "axios";
 import jwtDecode from "jwt-decode";
 
 export const loginAPI = (data, callback) => {
-  const url = `https://bidan-care-app.cyclic.app/api/users/login`;
+  const url = `/api/users/login`;
   axios
     .post(url, data, {
       headers: {

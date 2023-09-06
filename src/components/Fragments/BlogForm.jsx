@@ -63,16 +63,16 @@ export default function BlogForm() {
         gambarBlog: uploadedImage,
       };
       postBlog(data, (response) => {
-        console.log(response);
+        alert(response.data.message);
+        window.location.href = "/blog";
       });
-      window.location.href = "/blog";
     } else {
       const data = {
         judul: title,
         artikel: article,
       };
       postBlog(data, (response) => {
-        console.log(response);
+        alert(response.data.message);
         window.location.href = "/blog";
       });
     }

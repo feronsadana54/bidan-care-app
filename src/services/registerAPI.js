@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default function registerAPI(value, callback) {
-  const url = "https://bidan-care-app.cyclic.app/api/users/register";
+  const url = "/api/users/register";
   const data = axios
     .post(url, value, {
       headers: {

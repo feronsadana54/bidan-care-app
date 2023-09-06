@@ -1,28 +1,44 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable react-hooks/rules-of-hooks */
 import { useEffect, useState } from "react";
 import { getDataUser } from "../services/loginAPI";
 
 const LoginHook = () => {
   const [user, setUser] = useState({});
-  const currentTime = new Date().getTime();
-  const tokenExpiration = localStorage.getItem("tokenExpiration");
-  const token = localStorage.getItem("token");
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (token) {
-      if (tokenExpiration && currentTime > parseInt(tokenExpiration, 10)) {
-        window.location.reload();
-        localStorage.removeItem("token");
-        localStorage.removeItem("tokenExpiration");
+    const token = localStorage.getItem("token");
+    const tokenExpiration = localStorage.getItem("tokenExpiration");
+    const currentTime = new Date().getTime();
+
+    const fetchData = async () => {
+      if (token) {
+        if (tokenExpiration && currentTime > parseInt(tokenExpiration, 10)) {
+          // Token kadaluarsa, hapus token dan tokenExpiration
+          localStorage.removeItem("token");
+          localStorage.removeItem("tokenExpiration");
+
+          // Redirect ke halaman login
+          window.location.assign("/");
+        } else {
+          try {
+            const userData = await getDataUser(token);
+            setUser(userData);
+          } catch (error) {
+            // Tangani kesalahan saat mengambil data pengguna
+            console.error("Error fetching user data:", error);
+          }
+        }
       } else {
-        setUser(getDataUser(token));
+        // Token tidak ada, arahkan ke halaman login
+        window.location.assign("/");
       }
-    } else {
-      window.location.assign("/");
-    }
+
+      setIsLoading(false);
+    };
+
+    fetchData();
   }, []);
-  return user;
+  return isLoading ? null : user;
 };
 
 export default LoginHook;

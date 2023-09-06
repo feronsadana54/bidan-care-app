@@ -20,12 +20,10 @@ export default function Dashboard() {
       }
     });
     getBlog((response) => {
-      if (Array.isArray(response)) {
-        setBlog(response);
-      }
+      setBlog(response);
       setLoading(false);
     });
-  }, []);
+  }, [blog, topBlog]);
 
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 4;
@@ -35,7 +33,7 @@ export default function Dashboard() {
   // Hitung total halaman setelah data blog tersedia
   const totalPages = Math.ceil(blog.length / itemsPerPage);
 
-  const currentBlogPage = blog.slice(startIndex, endIndex);
+  const currentBlogPage = blog ? blog.slice(startIndex, endIndex) : [];
 
   const handlePrevPage = () => {
     if (currentPage > 1) {

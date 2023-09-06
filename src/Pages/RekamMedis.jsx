@@ -49,15 +49,17 @@ export default function RekamMedis() {
   }
 
   useEffect(() => {
-    getDataRekamMedisById(user.userId, (response) => {
-      if (user.isAdmin == false) {
-        setIsConfirm(response.data[0].isConfirm);
-        setIdRekamMedis(response.data[0]._id);
-        setLoading(false);
-      } else {
-        setLoading(false);
-      }
-    });
+    if (user) {
+      getDataRekamMedisById(user.userId, (response) => {
+        if (user.isAdmin == false) {
+          setIsConfirm(response.data[0].isConfirm);
+          setIdRekamMedis(response.data[0]._id);
+          setLoading(false);
+        } else {
+          setLoading(false);
+        }
+      });
+    }
   }, [isConfirm, user]);
 
   return (

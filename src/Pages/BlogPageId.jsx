@@ -14,7 +14,7 @@ import { FaHeart, FaTrashCan } from "react-icons/fa6";
 import { Helmet } from "react-helmet-async";
 
 export default function BlogDetail() {
-  const { userId } = LoginHook();
+  const user = LoginHook();
   const { id } = useParams();
   const [blog, setBlog] = useState([]);
   const [profile, setProfile] = useState("");
@@ -40,21 +40,21 @@ export default function BlogDetail() {
   }, [blog, id, comments, likes]);
 
   useEffect(() => {
-    if (userId) {
-      getDataById(userId, (response) => {
-        setProfile(response.data.fotoProfil);
+    if (user) {
+      getDataById(user.userId, (response) => {
+        setProfile(response.fotoProfil);
       });
     }
-  }, [comments, userId]);
+  }, [comments, user]);
 
   const handleComment = (e) => {
     e.preventDefault();
     const comment = commentText;
-    if (userId && id) {
+    if (user.userId && id) {
       if (comment !== "") {
         const data = {
           comment,
-          userId,
+          userId: user.userId,
         };
         addComment(id, data, () => {
           setCommentText("");
@@ -218,7 +218,7 @@ export default function BlogDetail() {
                           </time>
                         </p>
                       </div>
-                      {item.user == userId && (
+                      {item.user == user.userId && (
                         <button
                           onClick={handleDelete.bind(this, item._id)}
                           className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-400 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:bg-gray-900 dark:hover:bg-gray-700 dark:focus:ring-gray-600"

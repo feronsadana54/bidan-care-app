@@ -19,6 +19,7 @@ export default function BlogList() {
   const handleDelete = (id) => {
     setLoading(true);
     deleteBlog(id);
+    setLoading(false);
   };
 
   return (

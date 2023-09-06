@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   changeUserAdmin,
   getAllUserAdmin,
@@ -10,43 +10,29 @@ import { Helmet } from "react-helmet-async";
 export default function UserList() {
   const [admin, setAdmin] = useState([]);
   const [user, setUser] = useState([]);
-  const isAdmin = useRef(null);
   const userData = LoginHook();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getAllUserNotAdmin((response) => {
-      setUser(response.data.data);
+      setUser(response);
       setLoading(false);
     });
-
-    getAllUserAdmin((response) => {
-      setAdmin(response.data.data);
-      setLoading(false);
-    });
-  }, [user, admin]);
+  }, [user]);
 
   useEffect(() => {
-    if (admin.length > 0) {
-      admin.map((item) => {
-        if (item.isAdmin == true) {
-          isAdmin.current.checked = true;
-        }
-      });
-    }
+    getAllUserAdmin((response) => {
+      setAdmin(response);
+      setLoading(false);
+    });
+  }, [admin]);
 
-    if (user.length > 0) {
-      user.map((item) => {
-        if (item.isAdmin == false) {
-          isAdmin.current.checked = false;
-        }
-      });
-    }
-  }, [admin, user]);
-
-  let handlerIsAdmin = (id) => {
+  const handlerIsAdmin = (id) => {
     setLoading(true);
-    changeUserAdmin(id);
+    changeUserAdmin(id, (response) => {
+      console.log(response);
+    });
+    setLoading(false);
   };
 
   return (
@@ -75,7 +61,7 @@ export default function UserList() {
                 </tr>
               ) : admin && admin.length > 0 ? (
                 admin.map((item, index) => {
-                  if (userData.userId != item._id) {
+                  if (userData.userId !== item._id) {
                     return (
                       <tr key={item._id}>
                         <th>{++index}</th>
@@ -84,14 +70,12 @@ export default function UserList() {
                         <td>{item.username}</td>
                         <td>{item.noIdentitas}</td>
                         <td>
-                          <input
-                            type="checkbox"
-                            ref={isAdmin}
-                            onChange={() => handlerIsAdmin(item._id)}
-                            checked={item.isAdmin}
-                            className="checkbox"
-                            id="checkboxUser"
-                          />
+                          <button
+                            className="btn btn-warning"
+                            onClick={handlerIsAdmin.bind(this, item._id)}
+                          >
+                            Admin
+                          </button>
                         </td>
                       </tr>
                     );
@@ -140,14 +124,12 @@ export default function UserList() {
                       <td>{item.nomorHandphone}</td>
                       <td>{item.noIdentitas}</td>
                       <td>
-                        <input
-                          type="checkbox"
-                          ref={isAdmin}
-                          onChange={() => handlerIsAdmin(item._id)}
-                          checked={item.isAdmin}
-                          className="checkbox"
-                          id="checkboxUser"
-                        />
+                        <button
+                          className="btn btn-success"
+                          onClick={handlerIsAdmin.bind(this, item._id)}
+                        >
+                          User
+                        </button>
                       </td>
                     </tr>
                   );

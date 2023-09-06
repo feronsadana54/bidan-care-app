@@ -21,15 +21,15 @@ export default function EditProfile() {
 
   useEffect(() => {
     getDataById(id, (response) => {
-      setUser(response.data);
-      setNama(response.data.nama);
-      setEmail(response.data.email);
-      setUsername(response.data.username);
-      setTanggalLahir(response.data.tanggalLahir || "");
-      setAlamat(response.data.alamat || "");
-      setNomorHandphone(response.data.nomorHandphone || "");
-      setNoIdentitas(response.data.noIdentitas || "");
-      setUploadedImage(response.data.fotoProfil);
+      setUser(response);
+      setNama(response.nama);
+      setEmail(response.email);
+      setUsername(response.username);
+      setTanggalLahir(response.tanggalLahir || "");
+      setAlamat(response.alamat || "");
+      setNomorHandphone(response.nomorHandphone || "");
+      setNoIdentitas(response.noIdentitas || "");
+      setUploadedImage(response.fotoProfil);
       setLoading(false);
     });
   }, [id]);

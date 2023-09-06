@@ -1,0 +1,5 @@
+{
+    "/api": {
+        "target": "https://bidan-care-app.cyclic.app/",
+    }
+}

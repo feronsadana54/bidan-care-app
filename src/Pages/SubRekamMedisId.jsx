@@ -18,6 +18,7 @@ export default function SubRekamMedisId() {
   const [loading, setLoading] = useState(true);
 
   const handlerSubmit = (event) => {
+    setLoading(true);
     const data = {
       tanggalPemeriksaanSelanjutnya:
         event.target.tanggalPemeriksaanSelanjutnya.value,
@@ -26,6 +27,7 @@ export default function SubRekamMedisId() {
     };
     postSubRekamMedis(id, data, (response) => {
       alert(response.data.message);
+      setLoading(false);
     });
   };
 
@@ -44,6 +46,7 @@ export default function SubRekamMedisId() {
     const idSBM = event;
     deleteSubRekamMedis(idSBM, (response) => {
       alert(response.data.message);
+      setLoading(false);
     });
   };
 

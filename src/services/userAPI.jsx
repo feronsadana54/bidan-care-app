@@ -1,72 +1,73 @@
 import axios from "axios";
 
-export const getDataById = (id, callback) => {
-  const url = `https://bidan-care-app.cyclic.app/api/users/${id}`;
-  axios
-    .get(url, {
+export const getDataById = async (id, callback) => {
+  try {
+    const url = `/api/users/${id}`;
+    const response = await axios.get(url, {
       headers: {
         Authorization: localStorage.getItem("token"),
       },
-    })
-    .then(function (response) {
-      callback(response.data);
-    })
-    .catch(function (error) {
-      callback(error.response.data.message);
     });
+    callback(response.data.data);
+  } catch (error) {
+    console.log(error);
+    callback(error.response);
+  }
 };
 
 export async function getAllUserAdmin(callback) {
-  const url = "https://bidan-care-app.cyclic.app/api/users/get-user-admin";
-  await axios
-    .get(url, {
+  try {
+    const url = "/api/users/get-user-admin";
+    const response = await axios.get(url, {
       headers: {
         Authorization: localStorage.getItem("token"),
       },
-    })
-    .then(function (response) {
-      callback(response);
-    })
-    .catch(function (error) {
-      console.log(error.response);
     });
+    callback(response.data.data);
+  } catch (error) {
+    callback(error.response);
+  }
 }
 
 export async function getAllUserNotAdmin(callback) {
-  const url = "https://bidan-care-app.cyclic.app/api/users/get-user-not-admin";
-  await axios
-    .get(url, {
+  try {
+    const url = "/api/users/get-user-not-admin";
+    const response = await axios.get(url, {
       headers: {
         Authorization: localStorage.getItem("token"),
       },
-    })
-    .then(function (response) {
-      callback(response);
-    })
-    .catch(function (error) {
-      callback(error.response);
     });
+    callback(response.data.data);
+  } catch (error) {
+    callback(error.response);
+  }
 }
 
-export async function changeUserAdmin(id) {
-  const url = `https://bidan-care-app.cyclic.app/api/users/change-admin/${id}`;
-  axios.put(url, null, {
-    headers: {
-      Authorization: localStorage.getItem("token"),
-    },
-  });
+export async function changeUserAdmin(id, callback) {
+  try {
+    const url = `/api/users/change-admin/${id}`;
+    const response = await axios.put(url, null, {
+      headers: {
+        Authorization: localStorage.getItem("token"),
+      },
+    });
+    callback(response);
+  } catch (error) {
+    callback(error.response);
+  }
 }
 
-export function editUser(id, data, callback) {
-  const url = `https://bidan-care-app.cyclic.app/api/users/editUser/${id}`;
-  axios
-    .put(url, data, {
-      headers: { Authorization: localStorage.getItem("token") },
-    })
-    .then((response) => {
-      callback(response);
-    })
-    .catch((error) => {
-      callback(error);
+export async function editUser(id, data, callback) {
+  try {
+    const url = `/api/users/editUser/${id}`;
+    const response = await axios.put(url, data, {
+      headers: {
+        Authorization: localStorage.getItem("token"),
+      },
     });
+    console.log(response);
+    callback(response);
+  } catch (error) {
+    callback(error.response);
+  }
 }
